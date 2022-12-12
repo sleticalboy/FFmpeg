@@ -1093,7 +1093,8 @@ test_x86asm(){
     echo "$1" > $TMPASM
     log_file $TMPASM
     shift
-    test_cmd $x86asmexe $X86ASMFLAGS -Werror "$@" $(x86asm_o $TMPO) $TMPASM
+    # test_cmd $x86asmexe $X86ASMFLAGS -Werror "$@" $(x86asm_o $TMPO) $TMPASM
+    test_cmd $x86asmexe $X86ASMFLAGS -Wno-error "$@" $(x86asm_o $TMPO) $TMPASM
 }
 
 check_cmd(){
@@ -1504,7 +1505,7 @@ check_pkg_config_header_only(){
         eval add_cflags \$${name}_incflags
 }
 
-test_exec(){
+test_exec() {
     test_ld "cc" "$@" && { enabled cross_compile || $TMPE >> $logfile 2>&1; }
 }
 
@@ -3924,12 +3925,18 @@ LIBNAME='$(LIBPREF)$(FULLNAME)$(LIBSUF)'
 SLIBPREF="lib"
 SLIBSUF=".so"
 SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
+# SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
 SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
 SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR)'
 LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
-SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
-SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
+# SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
+# SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
 VERSION_SCRIPT_POSTPROCESS_CMD="cat"
+
+# redefine the following three env for building android platform library
+SLIBNAME_WITH_MAJOR='$(SLIBPREF)$(FULLNAME)-$(LIBMAJOR)$(SLIBSUF)'
+SLIB_INSTALL_NAME='$(SLIBNAME_WITH_MAJOR)'
+SLIB_INSTALL_LINKS='$(SLIBNAME)'
 
 asflags_filter=echo
 cflags_filter=echo
