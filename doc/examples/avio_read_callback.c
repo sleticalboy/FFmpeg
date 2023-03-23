@@ -28,10 +28,11 @@
  * AVIOContext read callback.
  */
 
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavformat/avio.h>
-#include <libavutil/file.h>
+#include "../../libavcodec/avcodec.h"
+#include "../../libavformat/avformat.h"
+#include "../../libavutil/error.h"
+#include "../../libavutil/file.h"
+#include "../../libavutil/mem.h"
 
 struct buffer_data {
     uint8_t *ptr;

@@ -28,8 +28,10 @@
  * input to the output without transcoding.
  */
 
-#include <libavutil/timestamp.h>
-#include <libavformat/avformat.h>
+#include "../../libavcodec/packet.h"
+#include "../../libavcodec/codec_par.h"
+#include "../../libavutil/timestamp.h"
+#include "../../libavformat/avformat.h"
 
 static void log_packet(const AVFormatContext *fmt_ctx, const AVPacket *pkt, const char *tag)
 {

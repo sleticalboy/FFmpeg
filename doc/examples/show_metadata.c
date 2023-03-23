@@ -29,8 +29,9 @@
 
 #include <stdio.h>
 
-#include <libavformat/avformat.h>
-#include <libavutil/dict.h>
+#include "../../libavformat/avformat.h"
+#include "../../libavutil/dict.h"
+#include "../../libavutil/log.h"
 
 int main (int argc, char **argv)
 {

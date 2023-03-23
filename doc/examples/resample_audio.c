@@ -29,10 +29,10 @@
  * ffplay.
  */
 
-#include <libavutil/opt.h>
-#include <libavutil/channel_layout.h>
-#include <libavutil/samplefmt.h>
-#include <libswresample/swresample.h>
+#include "../../libavutil/opt.h"
+#include "../../libavutil/channel_layout.h"
+#include "../../libavutil/samplefmt.h"
+#include "../../libswresample/swresample.h"
 
 static int get_format_from_sample_fmt(const char **fmt,
                                       enum AVSampleFormat sample_fmt)

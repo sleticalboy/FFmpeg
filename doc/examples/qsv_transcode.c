@@ -37,10 +37,10 @@
 #include <stdio.h>
 #include <errno.h>
 
-#include <libavutil/hwcontext.h>
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavutil/opt.h>
+#include "../../libavutil/hwcontext.h"
+#include "../../libavcodec/avcodec.h"
+#include "../../libavformat/avformat.h"
+#include "../../libavutil/opt.h"
 
 static AVFormatContext *ifmt_ctx = NULL, *ofmt_ctx = NULL;
 static AVBufferRef *hw_device_ctx = NULL;

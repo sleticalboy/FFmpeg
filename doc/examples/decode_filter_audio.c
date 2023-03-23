@@ -30,14 +30,13 @@
  * file to be played with ffplay.
  */
 
-#include <unistd.h>
-
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavfilter/buffersink.h>
-#include <libavfilter/buffersrc.h>
-#include <libavutil/channel_layout.h>
-#include <libavutil/opt.h>
+#include "../../libavcodec/avcodec.h"
+#include "../../libavformat/avformat.h"
+#include "../../libavfilter/buffersink.h"
+#include "../../libavfilter/buffersrc.h"
+#include "../../libavutil/channel_layout.h"
+#include "../../libavutil/frame.h"
+#include "../../libavutil/opt.h"
 
 static const char *filter_descr = "aresample=8000,aformat=sample_fmts=s16:channel_layouts=mono";
 static const char *player       = "ffplay -f s16le -ar 8000 -ac 1 -";

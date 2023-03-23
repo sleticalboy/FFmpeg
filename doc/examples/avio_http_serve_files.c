@@ -28,8 +28,8 @@
  * clients can connect and will receive the same file.
  */
 
-#include <libavformat/avformat.h>
-#include <libavutil/opt.h>
+#include "../../libavformat/avformat.h"
+#include "../../libavutil/opt.h"
 #include <unistd.h>
 
 static void process_client(AVIOContext *client, const char *in_uri)

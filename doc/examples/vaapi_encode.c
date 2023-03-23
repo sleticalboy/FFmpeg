@@ -31,9 +31,9 @@
 #include <string.h>
 #include <errno.h>
 
-#include <libavcodec/avcodec.h>
-#include <libavutil/pixdesc.h>
-#include <libavutil/hwcontext.h>
+#include "../../libavcodec/avcodec.h"
+#include "../../libavutil/pixdesc.h"
+#include "../../libavutil/hwcontext.h"
 
 static int width, height;
 static AVBufferRef *hw_device_ctx = NULL;

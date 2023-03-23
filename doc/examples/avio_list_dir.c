@@ -27,9 +27,11 @@
  * Show how to list directories through the libavformat AVIOContext API.
  */
 
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavformat/avio.h>
+#include <inttypes.h>
+
+#include "../../libavformat/avformat.h"
+#include "../../libavutil/error.h"
+#include "../../libavutil/log.h"
 
 static const char *type_string(int type)
 {

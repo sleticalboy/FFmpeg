@@ -30,13 +30,13 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
-#include <libavcodec/avcodec.h>
+#include "../../libavcodec/avcodec.h"
 
-#include <libavutil/channel_layout.h>
-#include <libavutil/common.h>
-#include <libavutil/frame.h>
-#include <libavutil/samplefmt.h>
+#include "../../libavutil/channel_layout.h"
+#include "../../libavutil/common.h"
+#include "../../libavutil/frame.h"
 
 /* check that a given sample format is supported by the encoder */
 static int check_sample_fmt(const AVCodec *codec, enum AVSampleFormat sample_fmt)
@@ -175,9 +175,10 @@ int main(int argc, char **argv)
 
     f = fopen(filename, "wb");
     if (!f) {
-        fprintf(stderr, "Could not open %s\n", filename);
+        fprintf(stderr, "Could not open %s, err: %d\n", filename, errno);
         exit(1);
     }
+    fprintf(stdout, "Opened file%s\n", filename);
 
     /* packet for holding encoded output */
     pkt = av_packet_alloc();
@@ -231,6 +232,9 @@ int main(int argc, char **argv)
     encode(c, NULL, pkt, f);
 
     fclose(f);
+    struct stat st;
+    stat(filename, &st);
+    fprintf(stderr, "Encode over, file size: %ld\n", st.st_size);
 
     av_frame_free(&frame);
     av_packet_free(&pkt);

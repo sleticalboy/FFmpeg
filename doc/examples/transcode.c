@@ -30,13 +30,14 @@
  * audio and video streams.
  */
 
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavfilter/buffersink.h>
-#include <libavfilter/buffersrc.h>
-#include <libavutil/channel_layout.h>
-#include <libavutil/opt.h>
-#include <libavutil/pixdesc.h>
+#include "../../libavcodec/avcodec.h"
+#include "../../libavformat/avformat.h"
+#include "../../libavfilter/buffersink.h"
+#include "../../libavfilter/buffersrc.h"
+#include "../../libavutil/channel_layout.h"
+#include "../../libavutil/frame.h"
+#include "../../libavutil/opt.h"
+#include "../../libavutil/pixdesc.h"
 
 static AVFormatContext *ifmt_ctx;
 static AVFormatContext *ofmt_ctx;

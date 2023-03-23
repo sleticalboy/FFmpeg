@@ -29,9 +29,10 @@
  * representation to stdout.
  */
 
-#include <libavutil/motion_vector.h>
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
+#include "../../libavutil/frame.h"
+#include "../../libavutil/motion_vector.h"
+#include "../../libavcodec/avcodec.h"
+#include "../../libavformat/avformat.h"
 
 static AVFormatContext *fmt_ctx = NULL;
 static AVCodecContext *video_dec_ctx = NULL;

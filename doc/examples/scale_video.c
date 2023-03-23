@@ -27,9 +27,16 @@
  * Generate a synthetic video signal and use libswscale to perform rescaling.
  */
 
-#include <libavutil/imgutils.h>
-#include <libavutil/parseutils.h>
-#include <libswscale/swscale.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+#include "../../libavutil/error.h"
+#include "../../libavutil/imgutils.h"
+#include "../../libavutil/mem.h"
+#include "../../libavutil/parseutils.h"
+#include "../../libswscale/swscale.h"
 
 static void fill_yuv_image(uint8_t *data[4], int linesize[4],
                            int width, int height, int frame_index)
